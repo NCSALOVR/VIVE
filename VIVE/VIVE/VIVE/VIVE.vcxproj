@@ -44,7 +44,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\amshah4\Desktop\oculus rift stuffs\rapidjson-master\include;C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Src;C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\amshah4\Downloads\boost_1_57_0\boost_1_57_0;C:\Users\amshah4\Desktop\oculus rift stuffs\rapidjson-master\include;C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Src;C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -74,15 +74,14 @@
     <ClCompile Include="OculusEnumeration.cpp" />
     <ClCompile Include="Sensor.cpp" />
     <ClCompile Include="Source1.cpp" />
+    <ClCompile Include="UnrealController.cpp" />
     <ClCompile Include="VIVE.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OculusSensor.h" />
     <ClInclude Include="Sensor.h" />
+    <ClInclude Include="UnrealController.h" />
     <ClInclude Include="VIVE.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="..\..\..\..\Downloads\Kin4WV2ConsoleSkeleton\ConsoleApplication8\bin\Debug\ConsoleApplication8.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

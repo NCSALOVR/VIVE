@@ -14,7 +14,9 @@
 #include <WinSock2.h>
 #include <sstream>
 #include <fstream>
-
+#include <thread>
+#include <dos.h>
+#include <conio.h>
 
 using namespace std;
 
@@ -105,14 +107,32 @@ int MplusM(){
 	return 0;
 }
 
-int main(int argc, char *argv[])
-{
-	/*VIVE viveInstance;
+void collectData(){
+	VIVE viveInstance;
 	viveInstance.createNewInstance();
 	viveInstance.addSensor(VIVE::OCULUS, "Oculus1");
-	viveInstance.startEnumeration();*/
+	viveInstance.startEnumeration();
+}
+
+void updateUnreal(){
+	return; 
+}
+
+int main(int argc, char *argv[])
+{
 	
-	HRESULT hr = CoInitialize(NULL);
+	typedef int(VIVE::*vive_fnc_ptr)();
+
+	vive_fnc_ptr fnc_ptr = &VIVE::startEnumeration;
+
+	thread t(collectData);
+	thread t1(updateUnreal);
+
+	while (true){
+		Sleep(5000);
+		cout << "[Debug] Still Collecting Data... \n";
+	}
 	
+	t.join();
 	return 0;
 }

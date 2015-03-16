@@ -58,7 +58,7 @@ int OculusSensor::createConnection()
 
 int OculusSensor::enumerateData()
 {
-	if (hmd){
+	while (hmd){
 		// Get more details about the HMD.
 		ovrSizei resolution = hmd->Resolution;
 		ovrBool ovrHmd_ConfigureTracking(ovrHmd hmd, unsigned int supportedTrackingCaps,
@@ -83,7 +83,6 @@ int OculusSensor::enumerateData()
 		ovrTrackingState ts = ovrHmd_GetTrackingState(hmd, ovr_GetTimeInSeconds());
 		if (ts.StatusFlags & (ovrStatus_OrientationTracked | ovrStatus_PositionTracked))
 		{
-
 			Posef pose = ts.HeadPose.ThePose;
 			pose.Rotation.GetEulerAngles<Axis_Y, Axis_X, Axis_Z>(&yaw, &eyePitch, &eyeRoll);
 
@@ -93,23 +92,20 @@ int OculusSensor::enumerateData()
 			writer.StartObject();
 			writer.String("yaw");
 			writer.Double(yaw);
-			writer.String("eyePitch");
+			writer.String("pitch");
 			writer.Double(eyePitch);
-			writer.String("yaw");
+			writer.String("roll");
 			writer.Double(eyeRoll);
 			writer.EndObject();
 
 			ofstream oculusFile;
-			oculusFile.open("C:/Users/amshah4/Desktop/Unreal stuff/ViveView/Saved/StagedBuilds/WindowsNoEditor/ViveView/Binaries/Win64/ActorList.txt");
+			oculusFile.open("C:/Users/amshah4/Documents/GitHub/VIVE/VIVE/Data/OculusData.json");
 			oculusFile << s.GetString();
 			oculusFile.close();
-			sendToServer("C:/Users/amshah4/Desktop/Unreal stuff/ViveView/Saved/StagedBuilds/WindowsNoEditor/ViveView/Binaries/Win64/ActorList.txt");
+			//sendToServer("C:/Users/amshah4/Desktop/Unreal stuff/ViveView/Saved/StagedBuilds/WindowsNoEditor/ViveView/Binaries/Win64/ActorList.txt");
 		}
-
-		return 0;
 	}
-	else
-		return -1;
+	return 1;
 }
 
 
@@ -127,6 +123,7 @@ int OculusSensor::sendToServer(char* fileLoc)
 	if (send(s, msg, strlen(msg), 0) < 0)
 	{
 		cout << "Send failed";
+		return 0;
 	}
 
 	Sleep(1);

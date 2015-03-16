@@ -30,6 +30,9 @@
     <ClCompile Include="Source1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UnrealController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VIVE.h">
@@ -41,8 +44,8 @@
     <ClInclude Include="OculusSensor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="..\..\..\..\Downloads\Kin4WV2ConsoleSkeleton\ConsoleApplication8\bin\Debug\ConsoleApplication8.lib" />
+    <ClInclude Include="UnrealController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
