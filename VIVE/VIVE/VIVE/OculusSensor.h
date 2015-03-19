@@ -23,10 +23,19 @@ public:
 	int OculusSensor::createConnection();
 	int OculusSensor::enumerateData();
 	int OculusSensor::sendToServer(char* fileLoc);
+	int OculusSensor::getType();
+	void send_msg(SOCKET sockfd, std::string msg);
+	std::string recv_num_bytes(SOCKET sockfd, uint32_t num_bytes);
+	std::string recv_msg(SOCKET sockfd);
+	int closeServer();
 private:
 	ovrHmd hmd;
-	WSADATA wsa;
-	SOCKET s;
-	struct sockaddr_in server;
+	WSADATA wsaData;
+	SOCKET ConnectSocket;
+	struct addrinfo *result,
+		*ptr,
+		hints;
+	int iResult;
+	int id;
 };
 

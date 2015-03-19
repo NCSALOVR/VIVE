@@ -1,6 +1,7 @@
 #include "VIVE.h"
 #include "OculusSensor.h"
 #include <iostream>
+#include <thread>
 
 using namespace std;
 
@@ -36,10 +37,24 @@ int VIVE::addSensor(SensorType type, char* description)
 }
 
 
-int VIVE::startEnumeration()
+void VIVE::kinectEnumeration()
 {
 	for (std::map<char*, Sensor*>::iterator it = sensor_list.begin(); it != sensor_list.end(); ++it){
-		it->second->enumerateData();
+		if (it->second->getType() == 1)
+			it->second->enumerateData();
 	}
+}
+
+void VIVE::oculusEnumeration()
+{
+	for (std::map<char*, Sensor*>::iterator it = sensor_list.begin(); it != sensor_list.end(); ++it){
+		cout << it->second->getType();
+		if (it->second->getType() == 0)
+			it->second->enumerateData();
+	}
+}
+
+int VIVE::startEnumeration()
+{
 	return 0;
 }

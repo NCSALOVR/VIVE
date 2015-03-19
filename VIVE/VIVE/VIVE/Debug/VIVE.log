@@ -1,10 +1,12 @@
-﻿Build started 3/16/2015 2:27:07 PM.
+﻿Build started 3/19/2015 4:20:30 PM.
      1>Project "C:\Users\amshah4\Documents\GitHub\VIVE\VIVE\VIVE\VIVE\VIVE.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\amshah4\Downloads\boost_1_57_0\boost_1_57_0 /I"C:\Users\amshah4\Desktop\oculus rift stuffs\rapidjson-master\include" /I"C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Src" /I"C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source1.cpp
          Source1.cpp
-     1>c:\users\amshah4\documents\github\vive\vive\vive\vive\source1.cpp(81): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\amshah4\documents\github\vive\vive\vive\vive\source1.cpp(93): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\amshah4\documents\github\vive\vive\vive\vive\source1.cpp(87): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\amshah4\documents\github\vive\vive\vive\vive\source1.cpp(99): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\amshah4\documents\github\vive\vive\vive\vive\source1.cpp(151): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\amshah4\documents\github\vive\vive\vive\vive\source1.cpp(234): warning C4102: 'std' : unreferenced label
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\amshah4\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Lib\Win32\VS2013" libovrd.lib ConsoleApplication8.lib winmm.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\amshah4\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\amshah4\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.lib" /MACHINE:X86 Debug\OculusSensor.obj
          Debug\OculusEnumeration.obj
@@ -17,4 +19,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.60
+Time Elapsed 00:00:01.13

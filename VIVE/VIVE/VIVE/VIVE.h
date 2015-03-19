@@ -11,6 +11,8 @@ public:
 	int createNewInstance();
 	int addSensor(SensorType type, char* description);
 	int startEnumeration();
+	void oculusEnumeration();
+	void kinectEnumeration();
 
 private:
 	std::map<char*, Sensor*> sensor_list;
