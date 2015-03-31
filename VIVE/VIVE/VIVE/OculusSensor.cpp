@@ -61,7 +61,7 @@ int OculusSensor::createConnection()
 	hints.ai_protocol = IPPROTO_TCP;  //TCP connection!!!
 
 	//resolve server address and port 
-	iResult = getaddrinfo("127.0.0.1", "8000", &hints, &result);
+	iResult = getaddrinfo("141.142.21.57", "8000", &hints, &result);
 
 	if (iResult != 0)
 	{
@@ -180,6 +180,7 @@ int OculusSensor::enumerateData()
 			ofstream oculusFile;
 			oculusFile.open("C:/Users/amshah4/Documents/GitHub/VIVE/VIVE/Data/OculusData.json");
 			oculusFile << s.GetString();
+			cout << "[DEBUG] Sending Update to server\n";
 			oculusFile.close();
 			sendToServer("C:/Users/amshah4/Documents/GitHub/VIVE/VIVE/Data/OculusData.json");
 		}
@@ -245,7 +246,6 @@ int OculusSensor::sendToServer(char* fileLoc)
 	std::ifstream ifs(fileLoc);
 	std::string fileContent((std::istreambuf_iterator<char>(ifs)),
 		(std::istreambuf_iterator<char>()));
-	cout << fileContent;
 	send_msg(ConnectSocket, fileContent);
 	ifs.close();
 	return 0;

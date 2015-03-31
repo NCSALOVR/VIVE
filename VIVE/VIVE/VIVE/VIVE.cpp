@@ -1,5 +1,6 @@
 #include "VIVE.h"
 #include "OculusSensor.h"
+#include "KinectSensor.h"
 #include <iostream>
 #include <thread>
 
@@ -29,7 +30,9 @@ int VIVE::addSensor(SensorType type, char* description)
 		return 1;
 	}
 	else if (KINECT == type){
-		return 0;
+		sensor_list[description] = new KinectSensor();
+		sensor_list[description]->createConnection();
+		return 1;
 	}
 	else{
 		return -1;

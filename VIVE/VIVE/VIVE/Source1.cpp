@@ -2,7 +2,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "VIVE.h"
-#include "OculusSensor.h"
+#include "KinectSensor.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -120,12 +120,14 @@ void occEnumerate(){
 }
 
 void kinEnumerate(){
+	//Library Spawn
 	viveInstance.kinectEnumeration();
 }
 
 void collectData(){
 	viveInstance.createNewInstance();
 	viveInstance.addSensor(VIVE::OCULUS, "Oculus1");
+	viveInstance.addSensor(VIVE::KINECT, "Kinect1");
 	
 	thread t1(occEnumerate);
 	thread t2(kinEnumerate);
@@ -193,7 +195,7 @@ void updateUnreal(){
 	hints.ai_protocol = IPPROTO_TCP;  //TCP connection!!!
 
 	//resolve server address and port 
-	iResult = getaddrinfo("127.0.0.1", "8000", &hints, &result);
+	iResult = getaddrinfo("141.142.21.57", "8000", &hints, &result);
 
 	if (iResult != 0)
 	{
@@ -233,9 +235,9 @@ void updateUnreal(){
 		send_msg(ConnectSocket, "1");
 		std:string update = "";
 		while (1){
-			Sleep(1000);
+			Sleep(500);
 			update = recv_msg(ConnectSocket);
-			if (update.length() > 0){
+			if (update.length() > 10){
 				StringBuffer s;
 				Writer<StringBuffer> writer(s);
 
@@ -243,7 +245,8 @@ void updateUnreal(){
 				writer.String(update.c_str());
 
 				ofstream oculusFile;
-				oculusFile.open("C:/Users/amshah4/Desktop/Unreal stuff/ViveView/Saved/StagedBuilds/WindowsNoEditor/ViveView/Binaries/Win64/ActorList.json");
+				oculusFile.open("C:/Users/amshah4/Desktop/Unreal_stuff/ViveView/Saved/StagedBuilds/WindowsNoEditor/ViveView/Binaries/Win64/ActorList.json");
+				cout << "[DEBUG] Recieved New File to send to Unreal\n";
 				oculusFile << s.GetString();
 				oculusFile.close();
 			}
@@ -280,7 +283,187 @@ int write(){
 	writer.StartArray();
 	writer.StartObject();
 	writer.Key("name");
-	writer.String("Object1");
+	writer.String("head");
+	writer.Key("position");
+	writer.StartArray();
+	writer.Double(1);
+	writer.Double(1);
+	writer.Double(1);
+	writer.EndArray();
+	writer.Key("radius");
+	writer.Double(1);
+	writer.EndObject();
+	writer.StartObject();
+	writer.Key("name");
+	writer.String("neck");
+	writer.Key("position");
+	writer.StartArray();
+	writer.Double(1);
+	writer.Double(1);
+	writer.Double(1);
+	writer.EndArray();
+	writer.Key("radius");
+	writer.Double(1);
+	writer.EndObject();
+	writer.StartObject();
+	writer.Key("name");
+	writer.String("shoulderleft");
+	writer.Key("position");
+	writer.StartArray();
+	writer.Double(1);
+	writer.Double(1);
+	writer.Double(1);
+	writer.EndArray();
+	writer.Key("radius");
+	writer.Double(1);
+	writer.EndObject();
+	writer.StartObject();
+	writer.Key("name");
+	writer.String("shoulderright");
+	writer.Key("position");
+	writer.StartArray();
+	writer.Double(1);
+	writer.Double(1);
+	writer.Double(1);
+	writer.EndArray();
+	writer.Key("radius");
+	writer.Double(1);
+	writer.EndObject();
+	writer.StartObject();
+	writer.Key("name");
+	writer.String("handleft");
+	writer.Key("position");
+	writer.StartArray();
+	writer.Double(1);
+	writer.Double(1);
+	writer.Double(1);
+	writer.EndArray();
+	writer.Key("radius");
+	writer.Double(1);
+	writer.EndObject();
+	writer.StartObject();
+	writer.Key("name");
+	writer.String("handright");
+	writer.Key("position");
+	writer.StartArray();
+	writer.Double(1);
+	writer.Double(1);
+	writer.Double(1);
+	writer.EndArray();
+	writer.Key("radius");
+	writer.Double(1);
+	writer.EndObject();
+	writer.StartObject();
+	writer.Key("name");
+	writer.String("elbowleft");
+	writer.Key("position");
+	writer.StartArray();
+	writer.Double(1);
+	writer.Double(1);
+	writer.Double(1);
+	writer.EndArray();
+	writer.Key("radius");
+	writer.Double(1);
+	writer.EndObject();
+	writer.StartObject();
+	writer.Key("name");
+	writer.String("elbowright");
+	writer.Key("position");
+	writer.StartArray();
+	writer.Double(1);
+	writer.Double(1);
+	writer.Double(1);
+	writer.EndArray();
+	writer.Key("radius");
+	writer.Double(1);
+	writer.EndObject();
+	writer.StartObject();
+	writer.Key("name");
+	writer.String("hipleft");
+	writer.Key("position");
+	writer.StartArray();
+	writer.Double(1);
+	writer.Double(1);
+	writer.Double(1);
+	writer.EndArray();
+	writer.Key("radius");
+	writer.Double(1);
+	writer.EndObject();
+	writer.StartObject();
+	writer.Key("name");
+	writer.String("hipright");
+	writer.Key("position");
+	writer.StartArray();
+	writer.Double(1);
+	writer.Double(1);
+	writer.Double(1);
+	writer.EndArray();
+	writer.Key("radius");
+	writer.Double(1);
+	writer.EndObject();
+	writer.StartObject();
+	writer.Key("name");
+	writer.String("kneeleft");
+	writer.Key("position");
+	writer.StartArray();
+	writer.Double(1);
+	writer.Double(1);
+	writer.Double(1);
+	writer.EndArray();
+	writer.Key("radius");
+	writer.Double(1);
+	writer.EndObject();
+	writer.StartObject();
+	writer.Key("name");
+	writer.String("kneeright");
+	writer.Key("position");
+	writer.StartArray();
+	writer.Double(1);
+	writer.Double(1);
+	writer.Double(1);
+	writer.EndArray();
+	writer.Key("radius");
+	writer.Double(1);
+	writer.EndObject();
+	writer.StartObject();
+	writer.Key("name");
+	writer.String("ankleleft");
+	writer.Key("position");
+	writer.StartArray();
+	writer.Double(1);
+	writer.Double(1);
+	writer.Double(1);
+	writer.EndArray();
+	writer.Key("radius");
+	writer.Double(1);
+	writer.EndObject();
+	writer.StartObject();
+	writer.Key("name");
+	writer.String("ankleright");
+	writer.Key("position");
+	writer.StartArray();
+	writer.Double(1);
+	writer.Double(1);
+	writer.Double(1);
+	writer.EndArray();
+	writer.Key("radius");
+	writer.Double(1);
+	writer.EndObject();
+	writer.StartObject();
+	writer.Key("name");
+	writer.String("footleft");
+	writer.Key("position");
+	writer.StartArray();
+	writer.Double(1);
+	writer.Double(1);
+	writer.Double(1);
+	writer.EndArray();
+	writer.Key("radius");
+	writer.Double(1);
+	writer.EndObject();
+	writer.StartObject();
+	writer.Key("name");
+	writer.String("footright");
 	writer.Key("position");
 	writer.StartArray();
 	writer.Double(1);
@@ -314,7 +497,7 @@ int main(int argc, char *argv[])
 {
 	write();
 
-	thread t(collectData);
+	/*thread t(collectData);
 	thread t1(updateUnreal);
 
 	while (true){
@@ -324,6 +507,5 @@ int main(int argc, char *argv[])
 	
 	t.join();
 	t1.join();
-	
-	return 0;
+	return 0;*/
 }

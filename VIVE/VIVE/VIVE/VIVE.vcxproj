@@ -70,6 +70,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="KinectSensor.cpp" />
     <ClCompile Include="OculusSensor.cpp" />
     <ClCompile Include="OculusEnumeration.cpp" />
     <ClCompile Include="Sensor.cpp" />
@@ -78,6 +79,7 @@
     <ClCompile Include="VIVE.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="KinectSensor.h" />
     <ClInclude Include="OculusSensor.h" />
     <ClInclude Include="Sensor.h" />
     <ClInclude Include="UnrealController.h" />
