@@ -91,7 +91,7 @@ int KinectSensor::createConnection(){
 	/* Should connect to server. Should be done similarly to KinectSensor::createConnection()*/
 }
 
-int KinectSensor::enumerateData(){
+int KinectSensor::enumerateData(const VIVE* myInstance){
 	/* Must simply send to server the file that is getting writter to on Desktop*/
 	
 	//sendToServer(FILELOC);

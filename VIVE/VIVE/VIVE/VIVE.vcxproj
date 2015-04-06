@@ -44,11 +44,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\amshah4\Downloads\boost_1_57_0\boost_1_57_0;C:\Users\amshah4\Desktop\oculus rift stuffs\rapidjson-master\include;C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Src;C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\School\rapid-json\rapidjson-master\include;D:\School\OculusSDK\LibOVR\Include;D:\School\OculusSDK\LibOVR\Src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Lib\Win32\VS2013</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\School\OculusSDK\LibOVR\Lib\Win32\VS2013</AdditionalLibraryDirectories>
       <AdditionalDependencies>libovrd.lib;ConsoleApplication8.lib;winmm.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -74,11 +74,16 @@
     <ClCompile Include="OculusSensor.cpp" />
     <ClCompile Include="OculusEnumeration.cpp" />
     <ClCompile Include="Sensor.cpp" />
+    <ClCompile Include="ServerAttempt.cpp" />
+    <ClCompile Include="ServerMM.cpp" />
+    <ClCompile Include="socketHelper.cpp" />
     <ClCompile Include="Source1.cpp" />
     <ClCompile Include="UnrealController.cpp" />
     <ClCompile Include="VIVE.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ServerMM.h" />
+    <ClInclude Include="socketHelper.h" />
     <ClInclude Include="KinectSensor.h" />
     <ClInclude Include="OculusSensor.h" />
     <ClInclude Include="Sensor.h" />

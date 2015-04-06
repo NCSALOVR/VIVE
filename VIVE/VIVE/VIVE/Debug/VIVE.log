@@ -1,23 +1,23 @@
-﻿Build started 3/20/2015 1:23:25 PM.
-     1>Project "C:\Users\amshah4\Documents\GitHub\VIVE\VIVE\VIVE\VIVE\VIVE.vcxproj" on node 2 (Build target(s)).
+﻿Build started 4/1/2015 8:30:17 PM.
+     1>Project "C:\Users\avi61_000\Documents\GitHub\VIVE\VIVE\VIVE\VIVE\VIVE.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\amshah4\Downloads\boost_1_57_0\boost_1_57_0 /I"C:\Users\amshah4\Desktop\oculus rift stuffs\rapidjson-master\include" /I"C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Src" /I"C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source1.cpp
-         Source1.cpp
-     1>c:\users\amshah4\documents\github\vive\vive\vive\vive\source1.cpp(87): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\amshah4\documents\github\vive\vive\vive\vive\source1.cpp(99): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\amshah4\documents\github\vive\vive\vive\vive\source1.cpp(153): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\amshah4\documents\github\vive\vive\vive\vive\source1.cpp(236): warning C4102: 'std' : unreferenced label
+         D:\Programs\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"D:\School\rapid-json\rapidjson-master\include" /ID:\School\OculusSDK\LibOVR\Include /ID:\School\OculusSDK\LibOVR\Src /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ServerAttempt.cpp
+         ServerAttempt.cpp
+     1>c:\users\avi61_000\documents\github\vive\vive\vive\vive\serverattempt.cpp(14): warning C4305: 'argument' : truncation from 'double' to 'float'
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\amshah4\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Lib\Win32\VS2013" libovrd.lib ConsoleApplication8.lib winmm.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\amshah4\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\amshah4\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.lib" /MACHINE:X86 Debug\KinectSensor.obj
+         D:\Programs\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\avi61_000\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.exe" /INCREMENTAL /NOLOGO /LIBPATH:D:\School\OculusSDK\LibOVR\Lib\Win32\VS2013 libovrd.lib ConsoleApplication8.lib winmm.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\avi61_000\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\avi61_000\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.lib" /MACHINE:X86 Debug\KinectSensor.obj
          Debug\OculusSensor.obj
          Debug\OculusEnumeration.obj
          Debug\Sensor.obj
+         Debug\ServerAttempt.obj
+         Debug\ServerMM.obj
+         Debug\socketHelper.obj
          Debug\Source1.obj
          Debug\UnrealController.obj
          Debug\VIVE.obj
-         VIVE.vcxproj -> C:\Users\amshah4\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.exe
-     1>Done Building Project "C:\Users\amshah4\Documents\GitHub\VIVE\VIVE\VIVE\VIVE\VIVE.vcxproj" (Build target(s)).
+         VIVE.vcxproj -> C:\Users\avi61_000\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.exe
+     1>Done Building Project "C:\Users\avi61_000\Documents\GitHub\VIVE\VIVE\VIVE\VIVE\VIVE.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:03.36
+Time Elapsed 00:00:01.19

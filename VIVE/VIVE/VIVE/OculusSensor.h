@@ -21,7 +21,7 @@ public:
 	OculusSensor();
 	~OculusSensor();
 	int OculusSensor::createConnection();
-	int OculusSensor::enumerateData();
+	int OculusSensor::enumerateData(const VIVE* myInstance);
 	int OculusSensor::sendToServer(char* fileLoc);
 	int OculusSensor::getType();
 	void send_msg(SOCKET sockfd, std::string msg);

@@ -22,7 +22,7 @@ public:
 	KinectSensor();
 	~KinectSensor();
 	int createConnection();
-	int enumerateData();
+	int enumerateData(const VIVE* myInstance);
 	int getType();
 	int sendToServer(char* fileLoc);
 	void send_msg(SOCKET sockfd, std::string msg);

@@ -102,7 +102,7 @@ int OculusSensor::createConnection()
 		return -1;
 }
 
-int OculusSensor::enumerateData()
+int OculusSensor::enumerateData(const VIVE* myInstance)
 {
 	while (hmd){
 		Sleep(1000);
