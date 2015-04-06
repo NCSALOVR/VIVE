@@ -1,11 +1,11 @@
-﻿Build started 4/1/2015 8:30:17 PM.
-     1>Project "C:\Users\avi61_000\Documents\GitHub\VIVE\VIVE\VIVE\VIVE\VIVE.vcxproj" on node 2 (Build target(s)).
+﻿Build started 4/6/2015 4:32:15 PM.
+     1>Project "C:\Users\amshah4\Documents\GitHub\VIVE\VIVE\VIVE\VIVE\VIVE.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Programs\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"D:\School\rapid-json\rapidjson-master\include" /ID:\School\OculusSDK\LibOVR\Include /ID:\School\OculusSDK\LibOVR\Src /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ServerAttempt.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\amshah4\Desktop\oculus rift stuffs\rapidjson-master\include" /I"C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Include" /I"C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Src" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ServerAttempt.cpp
          ServerAttempt.cpp
-     1>c:\users\avi61_000\documents\github\vive\vive\vive\vive\serverattempt.cpp(14): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\amshah4\documents\github\vive\vive\vive\vive\serverattempt.cpp(16): warning C4305: 'argument' : truncation from 'double' to 'float'
        Link:
-         D:\Programs\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\avi61_000\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.exe" /INCREMENTAL /NOLOGO /LIBPATH:D:\School\OculusSDK\LibOVR\Lib\Win32\VS2013 libovrd.lib ConsoleApplication8.lib winmm.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\avi61_000\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\avi61_000\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.lib" /MACHINE:X86 Debug\KinectSensor.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\amshah4\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Lib\Win32\VS2013" libovrd.lib ConsoleApplication8.lib winmm.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\amshah4\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\amshah4\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.lib" /MACHINE:X86 Debug\KinectSensor.obj
          Debug\OculusSensor.obj
          Debug\OculusEnumeration.obj
          Debug\Sensor.obj
@@ -15,9 +15,9 @@
          Debug\Source1.obj
          Debug\UnrealController.obj
          Debug\VIVE.obj
-         VIVE.vcxproj -> C:\Users\avi61_000\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.exe
-     1>Done Building Project "C:\Users\avi61_000\Documents\GitHub\VIVE\VIVE\VIVE\VIVE\VIVE.vcxproj" (Build target(s)).
+         VIVE.vcxproj -> C:\Users\amshah4\Documents\GitHub\VIVE\VIVE\VIVE\Debug\VIVE.exe
+     1>Done Building Project "C:\Users\amshah4\Documents\GitHub\VIVE\VIVE\VIVE\VIVE\VIVE.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.19
+Time Elapsed 00:00:01.37

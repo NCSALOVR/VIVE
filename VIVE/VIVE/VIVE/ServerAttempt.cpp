@@ -1,8 +1,10 @@
 #include "VIVE.h"
+#include "KinectSensor.h"
 
 const char * host = "127.0.0.1";
 const char * port = "8000";
 VIVE viveInstance(host, port);
+KinectSensor sensor;
 
 void threadCtoSWrapper()
 {
@@ -11,7 +13,12 @@ void threadCtoSWrapper()
 
 void threadStoCWrapper()
 {
-	viveInstance.threadStoC(0.1);
+	viveInstance.threadStoC(0.0166);
+}
+
+void startKinectEnumeration()
+{
+	sensor.enumerateData(viveInstance);
 }
 
 int main(int argc, char *argv[])
@@ -28,6 +35,8 @@ int main(int argc, char *argv[])
 
 	std::thread tWrite(threadCtoSWrapper);
 	std::thread tRead(threadStoCWrapper);
+	
+	std::thread tCollect(startKinectEnumeration);
 
 	int i = 0;
 	while (true)
@@ -36,11 +45,5 @@ int main(int argc, char *argv[])
 		if (update.length() != 0){
 			std::cout << "Update: " <<update << std::endl;
 		}
-
-		std::cout << "Sending update: " << std::to_string(i) << std::endl;
-		viveInstance.sendCommand("update", "{\"id\":" + std::to_string(i) + "}");
-
-		i++;
-		Sleep(500);
 	}
 }

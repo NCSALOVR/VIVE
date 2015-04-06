@@ -34,8 +34,8 @@ int VIVE::addSensor(SensorType type, char* description)
 		return 1;
 	}
 	else if (KINECT == type){
-		sensor_list[description] = new KinectSensor();
-		sensor_list[description]->createConnection();
+		//sensor_list[description] = new KinectSensor();
+		//sensor_list[description]->createConnection();
 		return 1;
 	}
 	else{

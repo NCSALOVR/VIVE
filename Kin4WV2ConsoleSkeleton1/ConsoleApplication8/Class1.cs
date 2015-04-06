@@ -181,8 +181,8 @@ namespace ConsoleApplication8
         {
             var obj = new output
             {
-                avatar = temp(skeleton),
-                //avatar = temp3(),
+                //avatar = temp(skeleton),
+                avatar = temp3(),
                 create = new List<JSONJoint>(),
                 move = temp2(skeleton),
                 Destroy = "[]"
@@ -216,7 +216,7 @@ namespace ConsoleApplication8
                 {
                     a.position[0] = joint.Position.Z * 1000;
                     a.position[1] = joint.Position.X * 1000;
-                    a.position[2] = joint.Position.Y * 1000;
+                    a.position[2] = (joint.Position.Y * 1000)-600;
                 }
             }
             a.rotation = 0;

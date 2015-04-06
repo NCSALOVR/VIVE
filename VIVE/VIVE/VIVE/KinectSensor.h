@@ -13,16 +13,16 @@
 
 #include "rapidjson/writer.h"
 #include "rapidjson/stringbuffer.h"
+#include "VIVE.h"
 
 
-class KinectSensor :
-	public Sensor
+class KinectSensor
 {
 public:
 	KinectSensor();
 	~KinectSensor();
 	int createConnection();
-	int enumerateData(const VIVE* myInstance);
+	int enumerateData(VIVE & myInstance);
 	int getType();
 	int sendToServer(char* fileLoc);
 	void send_msg(SOCKET sockfd, std::string msg);
