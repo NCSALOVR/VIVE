@@ -7,6 +7,7 @@
 #include <windows.h>
 #include <WS2tcpip.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "OVR_CAPI.h"
 #include "Kernel/OVR_Math.h"
@@ -40,7 +41,7 @@ int KinectSensor::createConnection(){
 int KinectSensor::enumerateData(VIVE& myInstance){
 	/* Must simply send to server the file that is getting writter to on Desktop*/
 	while (true){
-		std::string filePath = "C:/Users/amshah4/Documents/GitHub/VIVE/VIVE/OculusData.txt";
+		std::string filePath = "C:/Users/amshah4/Documents/GitHub/VIVE/update.json";
 
 		std::string data = "";
 
@@ -50,13 +51,15 @@ int KinectSensor::enumerateData(VIVE& myInstance){
 			ifs.close();
 		}
 		else{
-			std::cout << "[ERROR] Not a valid file: " << filePath << std::endl;
+			//std::cout << "[ERROR] Not a valid file: " << filePath << std::endl;
 			continue;
 		}
 
+		remove(filePath.c_str());
 		std::cout << "[DEBUG] Sending file to server" << endl;
 
-		myInstance.sendCommand("update", data);
+		if (data.compare("") != 0)
+			myInstance.sendCommand("update", data);
 	}
 
 	return 0;

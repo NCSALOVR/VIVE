@@ -188,12 +188,16 @@ namespace ConsoleApplication8
                 Destroy = "[]"
             };
             var json = new JavaScriptSerializer().Serialize(obj);
-            string curFile = @"C:/Users/amshah4/Desktop/Unreal_stuff/ViveView/Saved/StagedBuilds/WindowsNoEditor/ViveView/Binaries/Win64/ActorList.json";
+            //string curFile2 = @"C:/Users/amshah4/Desktop/Unreal_stuff/ViveView/Saved/StagedBuilds/WindowsNoEditor/ViveView/Binaries/Win64/ActorList.json";
+            string curFile = @"C:/Users/amshah4/Documents/GitHub/VIVE/update.json";
+            //string curFile = @"C:/Users/amshah4/Documents/GitHub/VIVE/update.json";
             if (json.Length > 30 && !File.Exists(curFile))
             {
                 //try
                 {
+
                     System.IO.File.WriteAllText(curFile, json);
+                    //System.IO.File.WriteAllText(curFile2, json);
                     //System.IO.File.WriteAllText(@"C:/Users/amshah4/Desktop/output.json", json);
                 }
                 //catch (IOException ex)
@@ -264,8 +268,8 @@ namespace ConsoleApplication8
                 Destroy = ""
             };
             var json = new JavaScriptSerializer().Serialize(obj1);
-            System.IO.File.WriteAllText(@"C:/Users/amshah4/Desktop/Unreal_stuff/ViveView/Saved/StagedBuilds/WindowsNoEditor/ViveView/Binaries/Win64/ActorList.json", json);
-            //System.IO.File.WriteAllText(@"C:/Users/amshah4/Desktop/output.json", json);
+            //System.IO.File.WriteAllText(@"C:/Users/amshah4/Desktop/Unreal_stuff/ViveView/Saved/StagedBuilds/WindowsNoEditor/ViveView/Binaries/Win64/ActorList.json", json);
+            System.IO.File.WriteAllText(@"C:/Users/amshah4/Documents/GitHub/VIVE/update.json", json);
         }
 
         public static Avatar temp3()
@@ -294,7 +298,7 @@ namespace ConsoleApplication8
                     temp1.position[0] = 1;
                     temp1.position[1] = 1;
                     temp1.position[2] = 1;
-                    temp1.radius = 1000.0;
+                    temp1.radius = 5.0;/////////////////////////////ANKOOR CHANGED FROM 1000.0
                     blah.Add(temp1);
                     //Thread.Sleep(100);
                 }

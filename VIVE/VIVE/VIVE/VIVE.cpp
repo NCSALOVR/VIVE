@@ -133,7 +133,6 @@ bool VIVE::handshake(SOCKET soc)
 
 void VIVE::begin(std::string action, float t)
 {
-	cout << "here" << endl;
 	if (action.compare("end") == 0){
 		std::cout << "Goodbye" << std::endl;
 		return;
