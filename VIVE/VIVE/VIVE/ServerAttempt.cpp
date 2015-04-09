@@ -4,7 +4,7 @@
 #include <fstream>
 #include <Windows.h>
 
-const char * host = "127.0.0.1";
+const char * host = "141.142.21.57";
 const char * port = "8000";
 VIVE viveInstance(host, port);
 KinectSensor sensor;
@@ -56,16 +56,16 @@ int main(int argc, char *argv[])
 	{
 		if (!fexists(filePath)){
 			std::string update = viveInstance.getUpdate();
-			std::cout << "Recieved File1" << std::endl;
 			if (update.length() != 0){
-				update = update.substr(6, update.length() - 1);
-				update = update.substr(0, update.length() - 1);
-				std::cout << "Recieved File" << std::endl;
+				//update = update.substr(6, update.length() - 1);
+				//update = update.substr(0, update.length() - 1);
+				//std::cout << "Recieved File" << std::endl;
 				std::ofstream myfile;
 				myfile.open(filePath);
 				myfile << update;
 				myfile.close();
-				std::cout << "WROTE FILE" << std::endl;
+				//std::cout << update << std::endl;
+				//std::cout << "WROTE FILE" << std::endl;
 			}
 		}
 		else{

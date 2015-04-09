@@ -117,6 +117,7 @@ bool VIVE::handshake(SOCKET soc)
 	try{
 		sendMsg(soc, std::to_string(id));
 		std::string errorCode = recvMsg(soc);
+		std::cout << errorCode << std::endl;
 		if (errorCode.compare("ok") != 0){
 			std::cout << errorCode << std::endl;
 			closesocket(soc);
@@ -166,7 +167,7 @@ void VIVE::begin(std::string action, float t)
 	std::cout << "You are id " << id << std::endl;
 	std::cout << "Use that id to login in the future" << std::endl;
 
-	sendMsg(soc, "end");
+	sendMsg(soc, "end_register");
 	recvMsg(soc);
 	closesocket(soc);
 }
@@ -198,12 +199,15 @@ void VIVE::threadCtoS()
 			sendMsg(cToSSoc, data);
 		}
 
-		std::string feedback = recvMsg(cToSSoc);
-		if (feedback.compare("goodbye") == 0){
-			closesocket(cToSSoc);
-			updateLock.unlock();
-			return;
+		if (action.compare("end") == 0){
+			std::string feedback = recvMsg(cToSSoc);
+			if (feedback.compare("goodbye") == 0){
+				closesocket(cToSSoc);
+				updateLock.unlock();
+				return;
+			}
 		}
+
 	}
 
 }
@@ -213,7 +217,7 @@ void VIVE::threadStoC(float t)
 	DWORD msInterval = t * 1000;
 	SOCKET sToCSoc = setupClientSocket(VIVEhost, VIVEport);
 
-	setsockopt(sToCSoc, SOL_SOCKET, SO_RCVTIMEO, (char *)&msInterval, sizeof(DWORD));
+	//setsockopt(sToCSoc, SOL_SOCKET, SO_RCVTIMEO, (char *)&msInterval, sizeof(DWORD));
 	if (sToCSoc == INVALID_SOCKET){
 		return;
 	}
@@ -245,10 +249,10 @@ void VIVE::threadStoC(float t)
 		}
 
 		dataLock.lock();
-		if (up.length() > 0){
+		if (up.compare("{}") != 0){
 			updates.push(up);
 		}
-		if (del.length() > 0){
+		if (del.compare("{}") != 0){
 			deletes.push(del);
 		}
 		dataLock.unlock();

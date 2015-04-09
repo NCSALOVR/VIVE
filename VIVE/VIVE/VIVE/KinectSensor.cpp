@@ -56,10 +56,12 @@ int KinectSensor::enumerateData(VIVE& myInstance){
 		}
 
 		remove(filePath.c_str());
-		std::cout << "[DEBUG] Sending file to server" << endl;
 
-		if (data.compare("") != 0)
+		if (data.compare("") != 0){
+			//cout << data << endl;
 			myInstance.sendCommand("update", data);
+			//std::cout << "[DEBUG] Sending file to server" << endl;
+		}
 	}
 
 	return 0;

@@ -230,6 +230,7 @@ namespace ConsoleApplication8
         public static List<JSONJoint> temp2(Body skeleton)
         {
             List<JSONJoint> blah = new List<JSONJoint>();
+            //string ID = skeleton.TrackingId.ToString();
             foreach (Joint joint in skeleton.Joints.Values)
             {
                 JSONJoint temp1 = new JSONJoint();
@@ -237,7 +238,8 @@ namespace ConsoleApplication8
                 {
                     if(joint.JointType == jointType)
                     {
-                        temp1.name = joint.JointType.ToString().ToLower();
+                        temp1.name = joint.JointType.ToString().ToLower()+"1";
+                        //temp1.name = temp1.name + ID;
                         temp1.position = new double[3];
                         temp1.position[0] = joint.Position.Z * 1000;
                         temp1.position[1] = joint.Position.X * 1000;
@@ -292,7 +294,7 @@ namespace ConsoleApplication8
                 {
                     //Console.Write(jointType);
                     JSONJoint temp1 = new JSONJoint();
-                    temp1.name = jointType.ToString().ToLower();
+                    temp1.name = jointType.ToString().ToLower()+"1";
                     //Console.Write(temp1.name);
                     temp1.position = new double[3];
                     temp1.position[0] = 1;
