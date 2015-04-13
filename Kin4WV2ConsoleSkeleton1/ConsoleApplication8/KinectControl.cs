@@ -63,7 +63,7 @@ namespace ConsoleApplication8
 #if ZERO
           bool first = true;
 #endif
-
+            //double mult = 1.0;
           for (int i = 0; i < colours.Length; i++)
           {
             if (this.bodies[i].IsTracked)
@@ -84,6 +84,7 @@ namespace ConsoleApplication8
                  this.DepthFrameSize);
 
               SkeletonSerializer.Serialize(this.bodies[i]);
+              //mult = mult + 1.0;
 #endif
             }
           }

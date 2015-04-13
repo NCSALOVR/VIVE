@@ -153,20 +153,22 @@ namespace ConsoleApplication8
 
     public static class SkeletonSerializer
     {
+        //public static local_mem[] IDs;
 
         public class output
         {
             public Avatar avatar;
             public List<JSONJoint> create;
             public List<JSONJoint> move;
-            public string Destroy;
+            public List<JSONJoint> Destroy;
         }
 
         public class Avatar
         {
             public Boolean changed;
+            public Boolean change_rotation;
             public double[] position;
-            public int rotation;
+            public double rotation;
         }
 
         public class JSONJoint
@@ -176,21 +178,51 @@ namespace ConsoleApplication8
             public double radius;
         }
 
+        /*public class local_mem
+        {
+            string id;
+            Joint[] prev_frame;
+
+             public local_mem(string new_id)
+             {
+                id = new_id;
+                prev_frame = new Joint[interestedJointTypes.Length];
+                for (int i = 0; i < interestedJointTypes.Length; i++)
+                {
+                    prev_frame[i].JointType = interestedJointTypes[i];
+                }
+             }
+
+            public void hard_copy(Body new_frame)
+            {
+                foreach (Joint joint in new_frame.Joints.Values)
+                {
+                    for (int i = 0; i < prev_frame.Length; i++)
+                    {
+                        if (prev_frame[i].JointType == joint.JointType)
+                        {
+                            prev_frame[i].Position.X = joint.Position.X;
+                            prev_frame[i].Position.Y = joint.Position.Y;
+                            prev_frame[i].Position.Z = joint.Position.Z;
+                        }
+                    }
+                }
+            }
+        }*/
 
         public static void Serialize(Body skeleton)
         {
             var obj = new output
             {
-                //avatar = temp(skeleton),
-                avatar = temp3(),
+                avatar = temp(skeleton),
+                //avatar = temp3(),
                 create = new List<JSONJoint>(),
                 move = temp2(skeleton),
-                Destroy = "[]"
+                Destroy = new List<JSONJoint>()
             };
             var json = new JavaScriptSerializer().Serialize(obj);
-            //string curFile2 = @"C:/Users/amshah4/Desktop/Unreal_stuff/ViveView/Saved/StagedBuilds/WindowsNoEditor/ViveView/Binaries/Win64/ActorList.json";
+            //string curFile = @"C:/Users/amshah4/Desktop/Unreal_stuff/ViveView/Saved/StagedBuilds/WindowsNoEditor/ViveView/Binaries/Win64/ActorList.json";
             string curFile = @"C:/Users/amshah4/Documents/GitHub/VIVE/update.json";
-            //string curFile = @"C:/Users/amshah4/Documents/GitHub/VIVE/update.json";
             if (json.Length > 30 && !File.Exists(curFile))
             {
                 //try
@@ -213,17 +245,20 @@ namespace ConsoleApplication8
         {
             Avatar a = new Avatar();
             a.changed = true;
+            a.change_rotation = false;
             a.position = new double[3];
             foreach (Joint joint in skeleton.Joints.Values)
             {
                 if (joint.JointType.ToString().ToLower() == "head")
                 {
-                    a.position[0] = joint.Position.Z * 1000;
-                    a.position[1] = joint.Position.X * 1000;
-                    a.position[2] = (joint.Position.Y * 1000)-600;
+                    a.position[0] = (joint.Position.Z * 1000);
+                    a.position[1] = (joint.Position.X * -1000);
+                    a.position[2] = (joint.Position.Y * 1000)-200;
                 }
             }
-            a.rotation = 0;
+            a.rotation = 0.0;
+            //string shit = a.rotation.ToString();
+            //System.IO.File.WriteAllText(@"C:/Users/amshah4/Desktop/blah.txt", shit);
             return a;
         }
 
@@ -242,7 +277,7 @@ namespace ConsoleApplication8
                         //temp1.name = temp1.name + ID;
                         temp1.position = new double[3];
                         temp1.position[0] = joint.Position.Z * 1000;
-                        temp1.position[1] = joint.Position.X * 1000;
+                        temp1.position[1] = joint.Position.X * -1000;
                         temp1.position[2] = joint.Position.Y * 1000;
                         temp1.radius = 1000.0;
                         blah.Add(temp1);
@@ -256,8 +291,8 @@ namespace ConsoleApplication8
         {
             public Avatar avatar;
             public List<JSONJoint> create;
-            public string move;
-            public string Destroy;
+            public List<JSONJoint> move;
+            public List<JSONJoint> Destroy;
         }
 
         public static void Serialize1()
@@ -266,8 +301,8 @@ namespace ConsoleApplication8
             {
                 avatar = temp3(),
                 create = temp4(),
-                move = "",
-                Destroy = ""
+                move = new List<JSONJoint>(),
+                Destroy = new List<JSONJoint>()
             };
             var json = new JavaScriptSerializer().Serialize(obj1);
             //System.IO.File.WriteAllText(@"C:/Users/amshah4/Desktop/Unreal_stuff/ViveView/Saved/StagedBuilds/WindowsNoEditor/ViveView/Binaries/Win64/ActorList.json", json);
@@ -278,11 +313,13 @@ namespace ConsoleApplication8
         {
             Avatar a = new Avatar();
             a.changed = false;
+            a.change_rotation = true;
             a.position = new double[3];
             a.position[0] = 0.0;
             a.position[1] = 0.0;
             a.position[2] = 0.0;
-            a.rotation = 0;
+            a.rotation = 45.0;
+        
             return a;
         }
 
@@ -309,15 +346,15 @@ namespace ConsoleApplication8
 
         static JointType[] interestedJointTypes = 
     {
-      JointType.Head,
-      /*JointType.Neck,
+      //JointType.Head,
+      //JointType.Neck,
       JointType.ShoulderLeft,
-      JointType.ShoulderRight,*/
+      JointType.ShoulderRight,
       JointType.HandLeft,
-      JointType.HandRight/*,
+      JointType.HandRight,
       JointType.ElbowLeft,
-      JointType.ElbowRight,
-      JointType.HipLeft,
+      JointType.ElbowRight//,
+      /*JointType.HipLeft,
       JointType.HipRight,
       JointType.KneeLeft,
       JointType.KneeRight,
