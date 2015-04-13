@@ -2,8 +2,6 @@
 #include "Sensor.h"
 #include "rapidjson/writer.h"
 #include "rapidjson/stringbuffer.h"
-#include "OVR_CAPI.h"
-#include "Kernel/OVR_Math.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -29,7 +27,7 @@ public:
 	std::string recv_msg(SOCKET sockfd);
 	int closeServer();
 private:
-	ovrHmd hmd;
+	//ovrHmd hmd;
 	WSADATA wsaData;
 	SOCKET ConnectSocket;
 	struct addrinfo *result,

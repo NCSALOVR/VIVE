@@ -8,8 +8,6 @@
 #include <WS2tcpip.h>
 #include <stdlib.h>
 
-#include "OVR_CAPI.h"
-#include "Kernel/OVR_Math.h"
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -20,7 +18,6 @@
 
 using namespace std;
 using namespace rapidjson;
-using namespace OVR;
 
 
 OculusSensor::OculusSensor()
@@ -38,6 +35,7 @@ int OculusSensor::getType(){
 
 int OculusSensor::createConnection()
 {
+	/*
 	ovr_Initialize();
 	hmd = ovrHmd_Create(0);
 
@@ -100,10 +98,13 @@ int OculusSensor::createConnection()
 		return 0;
 	else
 		return -1;
+		*/
+	return 0;
 }
 
 int OculusSensor::enumerateData(const VIVE* myInstance)
 {
+	/*
 	while (hmd){
 		Sleep(1000);
 		// Get more details about the HMD.
@@ -185,7 +186,7 @@ int OculusSensor::enumerateData(const VIVE* myInstance)
 			sendToServer("C:/Users/amshah4/Documents/GitHub/VIVE/VIVE/Data/OculusData.json");
 		}
 	}
-	closeServer();
+	closeServer();*/
 	return 1;
 }
 

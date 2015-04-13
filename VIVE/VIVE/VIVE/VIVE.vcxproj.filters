@@ -15,16 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="OculusEnumeration.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Sensor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VIVE.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="OculusSensor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source1.cpp">
@@ -51,9 +45,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Sensor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="OculusSensor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UnrealController.h">

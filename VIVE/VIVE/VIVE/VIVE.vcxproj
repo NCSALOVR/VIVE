@@ -44,12 +44,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\amshah4\Desktop\oculus rift stuffs\rapidjson-master\include;C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Include;C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\LOVR\Downloads\rapidjson-master\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Lib\Win32\VS2013</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libovrd.lib;ConsoleApplication8.lib;winmm.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>winmm.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -59,20 +60,19 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\amshah4\Desktop\oculus rift stuffs\rapidjson-master\include;C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Src;C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\LOVR\Downloads\rapidjson-master\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Users\amshah4\Desktop\oculus rift stuffs\OculusSDK\LibOVR\Lib\x64\VS2013</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
       <AdditionalDependencies>libovrd.lib;ConsoleApplication8.lib;Winmm.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="KinectSensor.cpp" />
-    <ClCompile Include="OculusSensor.cpp" />
-    <ClCompile Include="OculusEnumeration.cpp" />
     <ClCompile Include="Sensor.cpp" />
     <ClCompile Include="ServerAttempt.cpp" />
     <ClCompile Include="ServerMM.cpp" />
@@ -85,7 +85,6 @@
     <ClInclude Include="ServerMM.h" />
     <ClInclude Include="socketHelper.h" />
     <ClInclude Include="KinectSensor.h" />
-    <ClInclude Include="OculusSensor.h" />
     <ClInclude Include="Sensor.h" />
     <ClInclude Include="UnrealController.h" />
     <ClInclude Include="VIVE.h" />

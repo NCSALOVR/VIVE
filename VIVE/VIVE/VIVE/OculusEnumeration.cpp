@@ -7,15 +7,13 @@
 #include "rapidjson/filestream.h"   // wrapper of C stream for prettywriter as output
 #include <cstdio>
 
-#include "OVR_CAPI.h"
-#include "Kernel/OVR_Math.h"
 
-using namespace OVR;
 using namespace rapidjson;
 using namespace std;
 
 void Initialization()
 {
+	/*
 	ovr_Initialize();
 	ovrHmd hmd = ovrHmd_Create(0);
 	if (hmd)
@@ -86,4 +84,5 @@ void Initialization()
 
 	ovrHmd_Destroy(hmd);
 	ovr_Shutdown();
+	*/
 }
