@@ -1,4 +1,5 @@
-﻿using Microsoft.Kinect;
+﻿/*Ackhnowledgement to Mike Taulty who help me greatly with this code*/
+using Microsoft.Kinect;
 using System;
 
 namespace ConsoleApplication8
@@ -7,7 +8,7 @@ namespace ConsoleApplication8
   {
     static void Main(string[] args)
     {
-        SkeletonSerializer.Serialize1();
+        SkeletonSerializer.Serialize_default();
       Console.SetWindowSize(Constants.ConsoleWidth, Constants.ConsoleHeight);
       Console.Title = "Kinect Skeleton Console";
 

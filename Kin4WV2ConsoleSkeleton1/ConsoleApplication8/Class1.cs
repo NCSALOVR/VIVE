@@ -12,6 +12,8 @@ using System.Web.Script.Serialization;
 using System.Diagnostics;
 using System.Threading;
 
+/*This is a skeleton data parser write by Tut Tangtragulcharoen*/
+
 namespace ConsoleApplication8
 {
     /*
@@ -149,7 +151,8 @@ namespace ConsoleApplication8
         }
     }*/
 
-
+    /* The commented out code above is another JSON parser. It cannot be read by the Unreal Engine. It parsed data as a collection of bodies, and within those bodies , array of joints. 
+ * This is no longer relevent to the LOVR project. Howver, it might come in hand later for some future functionality*/
 
     public static class SkeletonSerializer
     {
@@ -210,39 +213,32 @@ namespace ConsoleApplication8
             }
         }*/
 
+        /*The section of code above is for storing the joint position in the previous frames in order to do filtering. But from the tests, filtering is not required and might cause a lot of lag*/
+
         public static void Serialize(Body skeleton)
         {
             var obj = new output
             {
-                avatar = temp(skeleton),
-                //avatar = temp3(),
+                avatar = create_avatar(skeleton), //avatar mode activated
+                //avatar = default_avatar(), //avatar mode deactivated
+                /*comment out either line above to activate and deactivate the avatar mode*/
                 create = new List<JSONJoint>(),
-                move = temp2(skeleton),
+                move = move_parser(skeleton),
                 Destroy = new List<JSONJoint>()
             };
             var json = new JavaScriptSerializer().Serialize(obj);
-            //string curFile = @"C:/Users/amshah4/Desktop/Unreal_stuff/ViveView/Saved/StagedBuilds/WindowsNoEditor/ViveView/Binaries/Win64/ActorList.json";
-            string curFile = @"C:/Users/amshah4/Documents/GitHub/VIVE/update.json";
+            string curFile = @"C:/Users/amshah4/Documents/GitHub/VIVE/update.json"; //change to where every VIVE reads from
             if (json.Length > 30 && !File.Exists(curFile))
             {
-                //try
-                {
-
                     System.IO.File.WriteAllText(curFile, json);
-                    //System.IO.File.WriteAllText(curFile2, json);
-                    //System.IO.File.WriteAllText(@"C:/Users/amshah4/Desktop/output.json", json);
-                }
-                //catch (IOException ex)
-                //{
-                    //An I/O error occured when opening the file
-                //}
             }
          }
 
 
 
-        public static Avatar temp(Body skeleton)
+        public static Avatar create_avatar(Body skeleton)
         {
+            double theta = -90.0;
             Avatar a = new Avatar();
             a.changed = true;
             a.change_rotation = false;
@@ -251,40 +247,49 @@ namespace ConsoleApplication8
             {
                 if (joint.JointType.ToString().ToLower() == "head")
                 {
-                    a.position[0] = (joint.Position.Z * 1000);
-                    a.position[1] = (joint.Position.X * -1000);
-                    a.position[2] = (joint.Position.Y * 1000)-200;
+                    //a.position[0] = (joint.Position.Z * 1000) * Math.Cos(theta) + (joint.Position.X * -1000) * Math.Sin(theta);
+                    //a.position[1] = (joint.Position.X * -1000) * Math.Sin(theta) - (joint.Position.Z * 1000) * Math.Cos(theta);
+                    /*The two lines above are the new xy joint position, after rotation using the rotation matrix*/
+                    a.position[0] = -1 * (joint.Position.Z * 1000); //JACK: I negated these two values to match the negated values of the head (read below)
+                    a.position[1] = -1 * (joint.Position.X * -1000);
+                    a.position[2] = (joint.Position.Y * 1000)-250;
                 }
             }
             a.rotation = 0.0;
-            //string shit = a.rotation.ToString();
-            //System.IO.File.WriteAllText(@"C:/Users/amshah4/Desktop/blah.txt", shit);
             return a;
         }
 
-        public static List<JSONJoint> temp2(Body skeleton)
+        public static List<JSONJoint> move_parser(Body skeleton)
         {
-            List<JSONJoint> blah = new List<JSONJoint>();
-            //string ID = skeleton.TrackingId.ToString();
+            List<JSONJoint> temp_jointList = new List<JSONJoint>();
+            double theta = -90.0;
             foreach (Joint joint in skeleton.Joints.Values)
             {
-                JSONJoint temp1 = new JSONJoint();
+                JSONJoint temp_joint = new JSONJoint();
                 foreach (var jointType in interestedJointTypes)
                 {
                     if(joint.JointType == jointType)
                     {
-                        temp1.name = joint.JointType.ToString().ToLower()+"1";
-                        //temp1.name = temp1.name + ID;
-                        temp1.position = new double[3];
-                        temp1.position[0] = joint.Position.Z * 1000;
-                        temp1.position[1] = joint.Position.X * -1000;
-                        temp1.position[2] = joint.Position.Y * 1000;
-                        temp1.radius = 1000.0;
-                        blah.Add(temp1);
+                        temp_joint.name = joint.JointType.ToString().ToLower()+"1";
+                        //temp_joint.name = temp_joint.name + ID;
+                        //add ID to the joints name
+                        temp_joint.position = new double[3];
+                        //temp_joint.position[0] = (joint.Position.Z * 1000)*Math.Cos(theta)+(joint.Position.X * -1000)*Math.Sin(theta);
+                       // temp_joint.position[1] = (joint.Position.X * -1000)*Math.Sin(theta)-(joint.Position.Z * 1000)*Math.Cos(theta);
+                        /*The two lines above are the new xy joint position, after rotation using the rotation matrix*/
+                        temp_joint.position[0] = -1 * (joint.Position.Z * 1000); //JACK: I negated these two values ( Z and X ) because they rendered backwards in Kinect, so now they are rendered frontwards in Unreal.
+                        temp_joint.position[1] = -1 * (joint.Position.X * -1000);
+                        temp_joint.position[2] = joint.Position.Y * 1000;
+                        temp_joint.radius = 5.0;
+                        if (temp_joint.name == "neck1" || temp_joint.name == "elbowleft1" || temp_joint.name == "elbowright1")
+                        {
+                            temp_joint.radius = 2.5;
+                        }
+                        temp_jointList.Add(temp_joint);
                     }
                 }
             }
-            return blah;
+            return temp_jointList;
         }
 
         public class output1
@@ -295,21 +300,20 @@ namespace ConsoleApplication8
             public List<JSONJoint> Destroy;
         }
 
-        public static void Serialize1()
+        public static void Serialize_default()
         {
             var obj1 = new output1
             {
-                avatar = temp3(),
-                create = temp4(),
+                avatar = default_avatar(),
+                create = default_create(),
                 move = new List<JSONJoint>(),
                 Destroy = new List<JSONJoint>()
             };
             var json = new JavaScriptSerializer().Serialize(obj1);
-            //System.IO.File.WriteAllText(@"C:/Users/amshah4/Desktop/Unreal_stuff/ViveView/Saved/StagedBuilds/WindowsNoEditor/ViveView/Binaries/Win64/ActorList.json", json);
-            System.IO.File.WriteAllText(@"C:/Users/amshah4/Documents/GitHub/VIVE/update.json", json);
+            System.IO.File.WriteAllText(@"C:/Users/amshah4/Documents/GitHub/VIVE/update.json", json); //change to where every VIVE reads from
         }
 
-        public static Avatar temp3()
+        public static Avatar default_avatar()
         {
             Avatar a = new Avatar();
             a.changed = false;
@@ -323,45 +327,50 @@ namespace ConsoleApplication8
             return a;
         }
 
-        public static List<JSONJoint> temp4()
+        public static List<JSONJoint> default_create()
         {
-            List<JSONJoint> blah = new List<JSONJoint>();
+            List<JSONJoint> temp_jointList = new List<JSONJoint>();
        
                 foreach (var jointType in interestedJointTypes)
                 {
-                    //Console.Write(jointType);
-                    JSONJoint temp1 = new JSONJoint();
-                    temp1.name = jointType.ToString().ToLower()+"1";
-                    //Console.Write(temp1.name);
-                    temp1.position = new double[3];
-                    temp1.position[0] = 1;
-                    temp1.position[1] = 1;
-                    temp1.position[2] = 1;
-                    temp1.radius = 5.0;/////////////////////////////ANKOOR CHANGED FROM 1000.0
-                    blah.Add(temp1);
-                    //Thread.Sleep(100);
+                    JSONJoint temp_joint = new JSONJoint();
+                    temp_joint.name = jointType.ToString().ToLower()+"1";
+                    temp_joint.position = new double[3];
+                    temp_joint.position[0] = 1;
+                    temp_joint.position[1] = 1;
+                    temp_joint.position[2] = 1;
+                    temp_joint.radius = 5.0;/////////////////////////////ANKOOR CHANGED FROM 1000.0
+                    if (temp_joint.name == "neck1" || temp_joint.name == "elbowleft1" || temp_joint.name == "elbowright1")
+                    {
+                        temp_joint.radius = 2.5;
+                    }
+                    temp_jointList.Add(temp_joint);
                 }
-            return blah;
+            return temp_jointList;
         }
 
         static JointType[] interestedJointTypes = 
     {
       //JointType.Head,
-      //JointType.Neck,
+      /*The head should be commented out when Avatar mode is activated. Otherwise nothing can be seen except for the inside of the head*/
+      JointType.Neck,
       JointType.ShoulderLeft,
       JointType.ShoulderRight,
       JointType.HandLeft,
       JointType.HandRight,
       JointType.ElbowLeft,
-      JointType.ElbowRight//,
-      /*JointType.HipLeft,
+      JointType.ElbowRight,
+      JointType.HipLeft,
       JointType.HipRight,
       JointType.KneeLeft,
       JointType.KneeRight,
       JointType.AnkleLeft,
       JointType.AnkleRight,
       JointType.FootLeft,
-      JointType.FootRight*/
+      JointType.FootRight,
+      JointType.SpineBase,
+      JointType.SpineMid,
+      JointType.SpineShoulder
     };
     }
 }

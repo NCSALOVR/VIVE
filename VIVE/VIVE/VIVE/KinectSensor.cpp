@@ -38,7 +38,7 @@ int KinectSensor::createConnection(){
 int KinectSensor::enumerateData(VIVE& myInstance){
 	/* Must simply send to server the file that is getting writter to on Desktop*/
 	while (true){
-		std::string filePath = "C:/Users/LOVR/Documents/GitHub/VIVE/update.json";
+		std::string filePath = "C:/Users/amshah4/Documents/GitHub/VIVE/update.json";
 
 		std::string data = "";
 

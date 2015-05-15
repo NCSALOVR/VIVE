@@ -1,11 +1,3 @@
-C:\Users\amshah4\Downloads\Kin4WV2ConsoleSkeleton1\ConsoleApplication8\bin\Debug\ConsoleApplication8.exe.config
-C:\Users\amshah4\Downloads\Kin4WV2ConsoleSkeleton1\ConsoleApplication8\bin\Debug\ConsoleApplication8.exe
-C:\Users\amshah4\Downloads\Kin4WV2ConsoleSkeleton1\ConsoleApplication8\bin\Debug\ConsoleApplication8.pdb
-C:\Users\amshah4\Downloads\Kin4WV2ConsoleSkeleton1\ConsoleApplication8\bin\Debug\Microsoft.Kinect.dll
-C:\Users\amshah4\Downloads\Kin4WV2ConsoleSkeleton1\ConsoleApplication8\bin\Debug\Microsoft.Kinect.xml
-C:\Users\amshah4\Downloads\Kin4WV2ConsoleSkeleton1\ConsoleApplication8\obj\Debug\ConsoleApplication8.exe
-C:\Users\amshah4\Downloads\Kin4WV2ConsoleSkeleton1\ConsoleApplication8\obj\Debug\ConsoleApplication8.pdb
-C:\Users\amshah4\Downloads\Kin4WV2ConsoleSkeleton1\ConsoleApplication8\obj\Debug\ConsoleApplication8.csprojResolveAssemblyReference.cache
 C:\Users\amshah4\Documents\GitHub\VIVE\Kin4WV2ConsoleSkeleton1\ConsoleApplication8\bin\Debug\ConsoleApplication8.exe.config
 C:\Users\amshah4\Documents\GitHub\VIVE\Kin4WV2ConsoleSkeleton1\ConsoleApplication8\obj\Debug\ConsoleApplication8.exe
 C:\Users\amshah4\Documents\GitHub\VIVE\Kin4WV2ConsoleSkeleton1\ConsoleApplication8\obj\Debug\ConsoleApplication8.pdb

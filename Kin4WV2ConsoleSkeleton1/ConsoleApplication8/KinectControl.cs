@@ -64,6 +64,7 @@ namespace ConsoleApplication8
           bool first = true;
 #endif
             //double mult = 1.0;
+            double first = 1.0;
           for (int i = 0; i < colours.Length; i++)
           {
             if (this.bodies[i].IsTracked)
@@ -82,8 +83,11 @@ namespace ConsoleApplication8
                  this.bodies[i],
                  this.sensor.CoordinateMapper,
                  this.DepthFrameSize);
-
-              SkeletonSerializer.Serialize(this.bodies[i]);
+              if (first==1.0)
+              {
+                  SkeletonSerializer.Serialize(this.bodies[i]);
+                  first = 0.0;
+              }
               //mult = mult + 1.0;
 #endif
             }

@@ -15,7 +15,7 @@
 #include <vector>
 #include <cstdlib>
 
-const char * host = "141.142.21.57";
+const char * host = "127.0.0.1";
 const char * port = "8000";
 VIVE viveInstance(host, port);
 KinectSensor sensor;
@@ -64,19 +64,27 @@ int main(int argc, char *argv[])
 	std::thread tCollect(startKinectEnumeration);
 
 	
-	char * filePath = "C:/Users/LOVR/Desktop/ViveView/Saved/StagedBuilds/WindowsNoEditor/ViveView/Binaries/Win64/ActorList.json";
-
+	char * filePath = "C:/Users/amshah4/Desktop/Unreal_stuff/ViveView/Saved/StagedBuilds/WindowsNoEditor/ViveView/Binaries/Win64/ActorList.json";
+	vector<string> seenJoints;
 	while (true)
 	{
 		if (!fexists(filePath)){
 			std::string update = viveInstance.getUpdate();
+			//std::string updateLast = viveInstance.getUpdate();
+			//std::string update = updateLast;
+			///while (true){
+			//	updateLast = viveInstance.getUpdate();
+			//	if (updateLast.length() == 0)
+			//		break;
+			//	update = updateLast;
+			//}
 			if (update.length() != 0){
 				//update = update.substr(6, update.length() - 1);
 				//update = update.substr(0, update.length() - 1);
-				//std::cout << "Recieved File" << std::endl;
+				//std::cout << "Re cieved File" << std::endl;
 				const char* jsonData = update.c_str();
 
-				cout << jsonData << endl;
+				//cout << jsonData << endl;
 
 				const long myprofile = viveInstance.id;
 
@@ -110,29 +118,71 @@ int main(int argc, char *argv[])
 							const Value& val = itr->value;
 							for (SizeType j = 0; j < val.Size(); j++)
 							{
+								bool seen = false;
 								for (Value::ConstMemberIterator moveitr = val[j].MemberBegin();
 									moveitr != val[j].MemberEnd(); ++moveitr)
 								{
 									string name = moveitr->name.GetString();
 									//Add To Vector Of Info
-									if (name.compare("position") == 0){
-										double pos[3];
-										for (SizeType k = 0; k < moveitr->value.Size(); k++){
-											pos[k] = moveitr->value[k].GetDouble();
+									if (name.compare("name") == 0)
+									{
+										for (int k = 0; k < seenJoints.size(); k++){
+											string myname = moveitr->value.GetString();
+											if (myname.compare(seenJoints.at(k)) == 0)
+											{
+												seen = true;
+												break;
+											}
 										}
-										positions.push_back(make_tuple(pos[0], pos[1], pos[2]));
 									}
-									if (name.compare("name") == 0){
-										names.push_back(moveitr->value.GetString());
+								}
+
+								//Actually Add
+								for (Value::ConstMemberIterator moveitr = val[j].MemberBegin();
+									moveitr != val[j].MemberEnd(); ++moveitr)
+								{
+									if (!seen){
+										string name = moveitr->name.GetString();
+										//Add To Vector Of Info
+										if (name.compare("name") == 0)
+										{
+											createNames.push_back(moveitr->value.GetString());
+											seenJoints.push_back(moveitr->value.GetString());
+										}
+										if (name.compare("position") == 0){
+											double pos[3];
+											for (SizeType k = 0; k < moveitr->value.Size(); k++){
+												pos[k] = moveitr->value[k].GetDouble();
+											}
+											createPositions.push_back(make_tuple(pos[0], pos[1], pos[2]));
+										}
+										if (name.compare("radius") == 0){
+											createRadius.push_back(moveitr->value.GetDouble());
+										}
 									}
-									if (name.compare("radius") == 0){
-										radius.push_back(moveitr->value.GetDouble());
+									else{
+										string name = moveitr->name.GetString();
+										//Add To Vector Of Info
+										if (name.compare("name") == 0)
+										{
+											names.push_back(moveitr->value.GetString());
+										}
+										if (name.compare("position") == 0){
+											double pos[3];
+											for (SizeType k = 0; k < moveitr->value.Size(); k++){
+												pos[k] = moveitr->value[k].GetDouble();
+											}
+											positions.push_back(make_tuple(pos[0], pos[1], pos[2]));
+										}
+										if (name.compare("radius") == 0){
+											radius.push_back(moveitr->value.GetDouble());
+										}
 									}
 								}
 							}
 						}
 						else if (name.compare("create") == 0){
-							const Value& val = itr->value;
+							/**const Value& val = itr->value;
 							for (SizeType j = 0; j < val.Size(); j++)
 							{
 								for (Value::ConstMemberIterator moveitr = val[j].MemberBegin();
@@ -154,7 +204,7 @@ int main(int argc, char *argv[])
 										createRadius.push_back(moveitr->value.GetDouble());
 									}
 								}
-							}
+							}**/
 						}
 						else if (name.compare("avatar") == 0){
 							if (currProfile == myprofile){
@@ -209,7 +259,7 @@ int main(int argc, char *argv[])
 				writer.Double(rotation);
 
 				writer.Key("change_rotation");
-				writer.Double(changeRotation);
+				writer.Bool(changeRotation);
 
 				writer.Key("changed");
 				writer.Bool(changed);
@@ -292,6 +342,7 @@ int main(int argc, char *argv[])
 			}
 		}
 		else{
+			std::string update = viveInstance.getUpdate();
 			continue;
 		}
 	}

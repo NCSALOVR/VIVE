@@ -44,7 +44,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\LOVR\Downloads\rapidjson-master\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\amshah4\Desktop\oculus rift stuffs\rapidjson-master\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
